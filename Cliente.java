@@ -40,6 +40,9 @@ public class Cliente extends Utilizador
     public double getY()                             { return this.y;                  }
     public ArrayList<Viagem> getHistoricoDeViagens() { return this.historicoDeViagens; }
     
+    public void setX(double pX)  { this.x = pX; }
+    public void setY(double pY)  { this.y = pY; }
+    
     
     public boolean equals(Object o)
     {
