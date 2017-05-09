@@ -5,7 +5,6 @@ import java.time.LocalDateTime;
 
 public class Viagem
 {
-    double xInicial, yInicial, xFinal, yFinal;
     private double distanciaDaViagem;
     private double distanciaTaxiCliente;
     private double tempoEstimado;
@@ -17,8 +16,6 @@ public class Viagem
 
     public Viagem()
     {
-        this.xInicial = 0.00; this.yInicial = 0.00;
-        this.xFinal = 0.00; this.yFinal = 0.00;
         this.distanciaDaViagem = 0.00;
         this.distanciaTaxiCliente = 0.00;
         this.tempoEstimado = 0.00;
@@ -29,17 +26,8 @@ public class Viagem
     }
     
     
-    public Viagem(double pXInicial, double pYInicial, 
-                  double pXFinal, double pYFinal, 
-                  double pDistanciaDaViagem,
-                  double pDistanciaTaxiCliente,
-                  double pTempoEstimado, 
-                  double pTempoReal, 
-                  double pPrecoDaViagem, 
-                  int pClassificacaoDaViagem)
+    public Viagem(double pDistanciaDaViagem, double pDistanciaTaxiCliente, double pTempoEstimado, double pTempoReal, double pPrecoDaViagem, int pClassificacaoDaViagem)
     {
-        this.xInicial = pXInicial; this.yInicial = pYInicial;
-        this.xFinal = pXFinal; this.yFinal = pYFinal;
         this.distanciaDaViagem = pDistanciaDaViagem;
         this.distanciaTaxiCliente = pDistanciaTaxiCliente;
         this.tempoEstimado = pTempoEstimado;
@@ -51,9 +39,7 @@ public class Viagem
     
     
     public Viagem(Viagem v)
-    {
-        this.xInicial = getXInicial(); this.yInicial = getYInicial();
-        this.xFinal = getXFinal(); this.yFinal = getYFinal();    
+    {    
         this.distanciaDaViagem = v.getDistanciaDaViagem();
         this.distanciaTaxiCliente = v.getDistanciaTaxiCliente();
         this.tempoEstimado = v.getTempoEstimado();
@@ -64,10 +50,6 @@ public class Viagem
     }
     
     
-    public double getXInicial()             { return this.xInicial;                 }
-    public double getYInicial()             { return this.yInicial;                 }
-    public double getXFinal()               { return this.xFinal;                   }
-    public double getYFinal()               { return this.yFinal;                   } 
     public double getDistanciaDaViagem()    { return this.distanciaDaViagem;        }
     public double getDistanciaTaxiCliente() { return this.distanciaTaxiCliente;     }
     public double getTempoEstimado()        { return this.tempoEstimado;            }
@@ -76,10 +58,6 @@ public class Viagem
     public int getClassificacaoDaViagem()   { return this.classificacaoDaViagem;    }
     public LocalDateTime getData()          { return this.data;                     }
     
-    public void setXInicial(double pXInicial)                         { this.xInicial = pXInicial;       }
-    public void setYInicial(double pYInicial)                         { this.yInicial = pYInicial;       }
-    public void setXFinal(double pXFinal)                             { this.xFinal = pXFinal;           }
-    public void setYFinal(double pYFinal)                             { this.yFinal = pYFinal;           }
     public void setDistanciaTaxiCliente(double pDistanciaTaxiCliente) { this.distanciaTaxiCliente = pDistanciaTaxiCliente; }
     
     
@@ -98,11 +76,7 @@ public class Viagem
         }
         
         Viagem v = (Viagem) o;       
-        return this.xInicial == v.getXInicial()
-            && this.yInicial == v.getYInicial()
-            && this.xFinal == v.getXFinal()
-            && this.yFinal == v.getYFinal()
-            && this.distanciaDaViagem == v.getDistanciaDaViagem()
+        return this.distanciaDaViagem == v.getDistanciaDaViagem()
             && this.distanciaTaxiCliente == v.getDistanciaTaxiCliente()
             && this.tempoEstimado == v.getTempoEstimado()
             && this.tempoReal == v.getTempoReal()
@@ -112,11 +86,7 @@ public class Viagem
     
     public String toString()
     {
-        StringBuilder string = new StringBuilder();
-        string.append("xInicial: "); string.append(this.xInicial);
-        string.append("yInicial: "); string.append(this.yInicial);
-        string.append("xFinal: "); string.append(this.xFinal);        
-        string.append("yFinal: "); string.append(this.yFinal);        
+        StringBuilder string = new StringBuilder();     
         string.append("DistanciaDaViagem: "); string.append(this.distanciaDaViagem);
         string.append("DistanciaTaxiCliente: "); string.append(this.distanciaTaxiCliente);
         string.append("TempoEstimado: "); string.append(this.tempoEstimado);

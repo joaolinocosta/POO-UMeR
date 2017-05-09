@@ -80,13 +80,10 @@ public class UMeR
         return this.hashMapClientes.containsKey(pCliente.getEmail());
     }
     
-    public void chamarUmTaxiPorId(Cliente pCliente, double pX, double pY, int pIdTaxi)
+    public void chamarUmTaxiPorId(Cliente pCliente, double pX, double pY, int pIdTaxi) throws MotoristaExcepcoes
     {
         Motorista m = new Motorista();
         Viagem v = new Viagem();
-        boolean existeClienteNoSistema = false;
-        boolean existeMotoristaNoSistema = false;
-        boolean motoristaDisponivel = false;
         
         if (procuraCliente(pCliente)) {
             pCliente.setX(pX);
@@ -94,8 +91,12 @@ public class UMeR
         
             m = procuraMotoristaPorKey(pIdTaxi);
             if (m != null) {
-                if (m.getEstaDisponivel()) {
+                if (!m.getEstaDisponivel()) {
+                    throw new MotoristaExcepcoes ("O motorista nao esta disponivel!");
+                } else {
                     v.setDistanciaTaxiCliente(v.calcularUmaDistancia(pCliente.getX(), pCliente.getY(), m.getX(), m.getY()));
+                    System.out.println("Introduza as coordenadas de destino: ");
+                    Scanner teclado = new Scanner(System.in);
                 }
             }
             
