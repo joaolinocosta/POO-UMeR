@@ -1,7 +1,6 @@
 import java.util.*;
 
 
-
 public class Moto extends Veiculo
 {
     private ArrayList<Viagem> filaDeEspera;
