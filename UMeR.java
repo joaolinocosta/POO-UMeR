@@ -83,6 +83,7 @@ public class UMeR
     public void chamarUmTaxiPorId(Cliente pCliente, double pX, double pY, int pIdTaxi)
     {
         Motorista m = new Motorista();
+        Viagem v = new Viagem();
         boolean existeClienteNoSistema = false;
         boolean existeMotoristaNoSistema = false;
         boolean motoristaDisponivel = false;
@@ -94,8 +95,7 @@ public class UMeR
             m = procuraMotoristaPorKey(pIdTaxi);
             if (m != null) {
                 if (m.getEstaDisponivel()) {
-                    existeClienteNoSistema = true;
-                    //calcular distância entre o cliente e o motorista
+                    v.setDistanciaTaxiCliente(v.calcularUmaDistancia(pCliente.getX(), pCliente.getY(), m.getX(), m.getY()));
                 }
             }
             
