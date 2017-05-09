@@ -1,0 +1,26 @@
+#BlueJ class context
+comment0.params=
+comment0.target=UMeR()
+comment1.params=pHashMapMotoristas\ pHashMapClientes\ hashMapVeiculos\ pHashMapEmpresas
+comment1.target=UMeR(java.util.HashMap,\ java.util.HashMap,\ java.util.HashMap,\ java.util.HashMap)
+comment10.params=pVeiculo
+comment10.target=void\ insereVeiculo(Veiculo)
+comment11.params=pEmpresa
+comment11.target=void\ insereEmpresa(Empresa)
+comment2.params=u
+comment2.target=UMeR(UMeR)
+comment3.params=
+comment3.target=java.util.HashMap\ getHashMapMotoristas()
+comment4.params=
+comment4.target=java.util.HashMap\ getHashMapClientes()
+comment5.params=
+comment5.target=java.util.HashMap\ getHashMapVeiculos()
+comment6.params=
+comment6.target=java.util.HashMap\ getHashMapEmpresas()
+comment7.params=
+comment7.target=UMeR\ clone()
+comment8.params=pMotorista
+comment8.target=void\ insereMotorista(Motorista)
+comment9.params=pCliente
+comment9.target=void\ insereCliente(Cliente)
+numComments=12

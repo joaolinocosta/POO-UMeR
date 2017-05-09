@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.params=
+comment0.target=CarroDe9Lugares()
+comment1.params=pVeiculo\ pFilaDeEspera
+comment1.target=CarroDe9Lugares(Veiculo,\ java.util.ArrayList)
+comment2.params=c9l
+comment2.target=CarroDe9Lugares(CarroDe9Lugares)
+comment3.params=
+comment3.target=java.util.ArrayList\ getFilaDeEspera()
+comment4.params=
+comment4.target=CarroDe9Lugares\ clone()
+numComments=5
