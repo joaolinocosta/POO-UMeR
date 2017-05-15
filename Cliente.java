@@ -18,9 +18,9 @@ public class Cliente extends Utilizador
     }
     
     
-    public Cliente(Utilizador pCliente, ArrayList<Viagem> pHistoricoDeViagens, double pX, double pY)
+    public Cliente(String pEmail, String pNome, String pPassword, String pMorada, String pDataDeNascimento, double pX, double pY,ArrayList<Viagem> pHistoricoDeViagens)
     {
-        super(pCliente);
+        super(pEmail, pNome, pPassword,pMorada,pDataDeNascimento);
         this.x = pX;
         this.y = pY;
         this.historicoDeViagens = new ArrayList<Viagem>(pHistoricoDeViagens);

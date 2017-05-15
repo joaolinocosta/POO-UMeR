@@ -1,8 +1,8 @@
 #BlueJ class context
 comment0.params=
 comment0.target=Motorista()
-comment1.params=pMotorista\ pIdTaxi\ pX\ pY\ pGrauDeCumprimentoDoHorario\ pClassificacaoDoMotorista\ pHistoricoDeViagens\ pTotalKms\ pEstaDisponivel
-comment1.target=Motorista(Utilizador,\ int,\ double,\ double,\ double,\ double,\ java.util.ArrayList,\ double,\ boolean)
+comment1.params=pEmail\ pNome\ pPassword\ pMorada\ pDataDeNascimento\ pIdTaxi\ pX\ pY\ pGrauDeCumprimentoDoHorario\ pClassificacaoDoMotorista\ pTotalKms\ pEstaDisponivel
+comment1.target=Motorista(java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ int,\ double,\ double,\ double,\ double,\ double,\ boolean)
 comment10.params=
 comment10.target=boolean\ getEstaDisponivel()
 comment11.params=o
