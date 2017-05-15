@@ -1,8 +1,8 @@
 #BlueJ class context
 comment0.params=
 comment0.target=Cliente()
-comment1.params=pCliente\ pHistoricoDeViagens\ pX\ pY
-comment1.target=Cliente(Utilizador,\ java.util.ArrayList,\ double,\ double)
+comment1.params=pEmail\ pNome\ pPassword\ pMorada\ pDataDeNascimento\ pX\ pY\ pHistoricoDeViagens
+comment1.target=Cliente(java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ double,\ double,\ java.util.ArrayList)
 comment10.params=
 comment10.target=Cliente\ clone()
 comment2.params=c

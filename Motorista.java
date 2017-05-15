@@ -26,23 +26,27 @@ public class Motorista extends Utilizador
     }
 
     
-    public Motorista(Utilizador pMotorista, 
-                     int pIdTaxi, 
-                     double pX, 
-                     double pY, 
-                     double pGrauDeCumprimentoDoHorario, 
-                     double pClassificacaoDoMotorista, 
-                     ArrayList<Viagem> pHistoricoDeViagens, 
-                     double pTotalKms, 
-                     boolean pEstaDisponivel)
+    public Motorista(String pEmail,
+                    String pNome,
+                    String pPassword,
+                    String pMorada,
+                    String pDataDeNascimento,
+                    int pIdTaxi, 
+                    double pX, 
+                    double pY, 
+                    double pGrauDeCumprimentoDoHorario, 
+                    double pClassificacaoDoMotorista, 
+                    //ArrayList<Viagem> pHistoricoDeViagens, 
+                    double pTotalKms, 
+                    boolean pEstaDisponivel)
     {
-        super(pMotorista);
+        super(pEmail,pNome,pPassword,pMorada,pDataDeNascimento);
         this.idTaxi = pIdTaxi;
         this.x = pX;
         this.y = pY;
         this.grauDeCumprimentoDoHorario = pGrauDeCumprimentoDoHorario;
         this.classificacaoDoMotorista = pClassificacaoDoMotorista;
-        this.historicoDeViagens = new ArrayList<Viagem>(pHistoricoDeViagens);
+        this.historicoDeViagens = new ArrayList<Viagem>();
         this.totalKms = pTotalKms; 
         this.estaDisponivel = pEstaDisponivel;
     }
@@ -100,14 +104,14 @@ public class Motorista extends Utilizador
     public String toString()
     {
         StringBuilder string = new StringBuilder(); 
-        string.append("TaxiID: "); string.append(this.idTaxi);
-        string.append("x: "); string.append(this.x);
-        string.append("y: "); string.append(this.y); 
-        string.append("GrauDeCumprimentoDoHorario: "); string.append(this.grauDeCumprimentoDoHorario);
-        string.append("ClassificacaoDoMotorista: "); string.append(this.classificacaoDoMotorista);
-        string.append("HistoricoDeViagens: "); string.append(this.historicoDeViagens.toString());
-        string.append("TotalKms: "); string.append(this.totalKms);
-        string.append("EstaDisponivel: "); string.append(this.estaDisponivel);
+        string.append("TaxiID: "); string.append(this.idTaxi); string.append("\n");
+        string.append("x: "); string.append(this.x);string.append("\n");
+        string.append("y: "); string.append(this.y); string.append("\n");
+        string.append("GrauDeCumprimentoDoHorario: "); string.append(this.grauDeCumprimentoDoHorario); string.append("\n");
+        string.append("ClassificacaoDoMotorista: "); string.append(this.classificacaoDoMotorista); string.append("\n");
+        string.append("HistoricoDeViagens: "); string.append(this.historicoDeViagens.toString()); string.append("\n");
+        string.append("TotalKms: "); string.append(this.totalKms); string.append("\n");
+        string.append("EstaDisponivel: "); string.append(this.estaDisponivel); string.append("\n");
         
        return string.toString();
     }
