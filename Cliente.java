@@ -3,45 +3,31 @@ import java.util.*;
 
 public class Cliente extends Utilizador
 {
-    private double x;
-    private double y;
-    private ArrayList<Viagem> historicoDeViagens;
+    private List<Viagem> historicoDeViagens;
     
-    
-
     public Cliente()
     {
         super();
-        this.x = 0.00;
-        this.y = 0.00;
         this.historicoDeViagens = new ArrayList<Viagem>();
     }
     
     
-    public Cliente(Utilizador pCliente, ArrayList<Viagem> pHistoricoDeViagens, double pX, double pY)
+    public Cliente(String pEmail, String pNome, String pPassword, String pMorada, String pDataDeNascimento, double pX, double pY,List<Viagem> pHistoricoDeViagens)
     {
-        super(pCliente);
-        this.x = pX;
-        this.y = pY;
+        super(pEmail, pNome, pPassword,pMorada,pDataDeNascimento,pX,pY);
         this.historicoDeViagens = new ArrayList<Viagem>(pHistoricoDeViagens);
     }
     
     
     public Cliente(Cliente c)
     {
-        super(c);
-        this.x = c.getX();
-        this.y = c.getY();
+        super(c.getEmail(),c.getNome(),c.getPassword(),c.getMorada(),c.getDataDeNascimento(),c.getX(),c.getY());
         this.historicoDeViagens = c.getHistoricoDeViagens();
     }
     
-    
-    public double getX()                             { return this.x;                  }
-    public double getY()                             { return this.y;                  }
-    public ArrayList<Viagem> getHistoricoDeViagens() { return this.historicoDeViagens; }
-    
-    public void setX(double pX)  { this.x = pX; }
-    public void setY(double pY)  { this.y = pY; }
+   
+    public List<Viagem> getHistoricoDeViagens()      { return this.historicoDeViagens; }
+    public void setHistoricoDeViagens(List<Viagem> l) {this.historicoDeViagens =l;}
     
     
     public boolean equals(Object o)
@@ -59,18 +45,14 @@ public class Cliente extends Utilizador
         }
         
         Cliente c = (Cliente) o;
-        return this.x == c.getX()
-            && this.y == c.getY()
-            && this.historicoDeViagens == c.getHistoricoDeViagens();
+        return  this.historicoDeViagens.equals(c.getHistoricoDeViagens());
     }
     
     
     public String toString()
     {
-        StringBuilder string =  new StringBuilder();   
-        string.append("x:"); string.append(this.x); 
-        string.append("y:"); string.append(this.y);
-        string.append("HistoricoDeViagens: "); string.append(this.historicoDeViagens.toString());
+        StringBuilder string =  new StringBuilder(super.toString());
+        string.append("HistoricoDeViagens: "); string.append(this.historicoDeViagens.toString()+"\n");
         
         return string.toString();
     }
