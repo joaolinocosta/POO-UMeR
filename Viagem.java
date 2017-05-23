@@ -32,7 +32,7 @@ public class Viagem
         this.distanciaTaxiCliente = pDistanciaTaxiCliente;
         this.tempoEstimado = pTempoEstimado;
         this.tempoReal = pTempoReal;
-        this.precoDaViagem = pPrecoDaViagem;
+        this.precoDaViagem = pPrecoDaViagem;    
         this.classificacaoDaViagem = pClassificacaoDaViagem;
         this.data = LocalDateTime.now();
     }
@@ -58,7 +58,12 @@ public class Viagem
     public int getClassificacaoDaViagem()   { return this.classificacaoDaViagem;    }
     public LocalDateTime getData()          { return this.data;                     }
     
+    public void setDistanciaDaViagem(double pD) {this.distanciaDaViagem = pD; }
     public void setDistanciaTaxiCliente(double pDistanciaTaxiCliente) { this.distanciaTaxiCliente = pDistanciaTaxiCliente; }
+    public void setTempoEstimado(double time) {this.tempoEstimado = time; }
+    public void setTempoReal(double tr) {this.tempoReal = tr; }
+    public void setPrecoDaViagem(double pv) {this.precoDaViagem = pv; }
+    public void setClassificaçaoDaViagem(int c) {this.classificacaoDaViagem = c; }
     
     
     public boolean equals(Object o)
@@ -101,13 +106,5 @@ public class Viagem
     public Viagem clone()
     {
         return new Viagem(this);
-    }
-    
-    
-    public double calcularUmaDistancia(double pXInicial, double pYInicial, double pXFinal, double pYFinal)
-    {
-        double distancia = Math.sqrt(Math.pow((pXInicial - pXFinal), (double) 2) + Math.pow((pYInicial - pYFinal), 2));
-        
-        return distancia;
     }
 }

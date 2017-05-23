@@ -1,10 +1,10 @@
 import java.util.*;
+import java.io.Serializable;
 
 
-public class Motorista extends Utilizador
-{
-    private int idTaxi;
-    private double x, y;
+public class Motorista extends Utilizador implements Serializable 
+{ 
+    private Veiculo taxi;
     private double grauDeCumprimentoDoHorario;
     private double classificacaoDoMotorista;
     private ArrayList<Viagem> historicoDeViagens;
@@ -15,34 +15,34 @@ public class Motorista extends Utilizador
     public Motorista()
     {
         super();
-        this.idTaxi = 0;
-        this.x = 0.00;
-        this.y = 0.00;
-        this.grauDeCumprimentoDoHorario = 0;
-        this.classificacaoDoMotorista = 0;
+        this.taxi = new CarroLigeiro();
+        this.grauDeCumprimentoDoHorario = 100;
+        this.classificacaoDoMotorista = 100;
         this.historicoDeViagens = new ArrayList<Viagem>();
         this.totalKms = 0;
         this.estaDisponivel = false;
     }
 
     
-    public Motorista(Utilizador pMotorista, 
-                     int pIdTaxi, 
-                     double pX, 
-                     double pY, 
-                     double pGrauDeCumprimentoDoHorario, 
-                     double pClassificacaoDoMotorista, 
-                     ArrayList<Viagem> pHistoricoDeViagens, 
-                     double pTotalKms, 
-                     boolean pEstaDisponivel)
+    public Motorista(String pEmail,
+                    String pNome,
+                    String pPassword,
+                    String pMorada,
+                    String pDataDeNascimento,
+                    Veiculo Taxi, 
+                    double pX, 
+                    double pY, 
+                    double pGrauDeCumprimentoDoHorario, 
+                    double pClassificacaoDoMotorista, 
+                    //ArrayList<Viagem> pHistoricoDeViagens, 
+                    double pTotalKms, 
+                    boolean pEstaDisponivel)
     {
-        super(pMotorista);
-        this.idTaxi = pIdTaxi;
-        this.x = pX;
-        this.y = pY;
+        super(pEmail,pNome,pPassword,pMorada,pDataDeNascimento,pX,pY);
+        this.taxi = Taxi;
         this.grauDeCumprimentoDoHorario = pGrauDeCumprimentoDoHorario;
         this.classificacaoDoMotorista = pClassificacaoDoMotorista;
-        this.historicoDeViagens = new ArrayList<Viagem>(pHistoricoDeViagens);
+        this.historicoDeViagens = new ArrayList<Viagem>();
         this.totalKms = pTotalKms; 
         this.estaDisponivel = pEstaDisponivel;
     }
@@ -50,10 +50,8 @@ public class Motorista extends Utilizador
     
     public Motorista(Motorista m)
     {
-        super(m);
-        this.idTaxi = m.getIdTaxi();
-        this.x = m.getX();
-        this.y = m.getY();
+        super(m.getEmail(),m.getNome(),m.getPassword(),m.getMorada(),m.getDataDeNascimento(),m.getX(),m.getY());
+        this.taxi = m.getTaxi();
         this.grauDeCumprimentoDoHorario = m.getGrauDeCumprimentoDoHorario();
         this.classificacaoDoMotorista = m.getClassificacaoDoMotorista();
         this.historicoDeViagens = m.getHistoricoDeViagens();
@@ -62,14 +60,19 @@ public class Motorista extends Utilizador
     }
     
     
-    public int getIdTaxi()                            { return this.idTaxi;                     }
-    public double getX()                              { return this.x;                          }
-    public double getY()                              { return this.y;                          }
+    public Veiculo getTaxi()                            { return this.taxi;                     }
     public double getGrauDeCumprimentoDoHorario()     { return this.grauDeCumprimentoDoHorario; }
     public double getClassificacaoDoMotorista()       { return this.classificacaoDoMotorista;   }
     public ArrayList<Viagem> getHistoricoDeViagens()  { return this.historicoDeViagens;         }
     public double getTotalKms()                       { return this.totalKms;                   }
     public boolean getEstaDisponivel()                { return this.estaDisponivel;             }
+    
+    public void setTaxi(Veiculo v) { this.taxi = v;}
+    public void setGrauDeCumormentoDoHorario(double g) { this.grauDeCumprimentoDoHorario = g;}
+    public void setClassificacaoDoMotorista(double c) {this. classificacaoDoMotorista = c;}
+    public void setHistoricoDeViagens(ArrayList<Viagem> l) {this. historicoDeViagens = l;}
+    public void setTotalKms(double kms) {this.totalKms  = kms;}
+    public void setEstaDisponivel(boolean b) {this.estaDisponivel  = b;}
     
     
     public boolean equals(Object o)
@@ -87,9 +90,7 @@ public class Motorista extends Utilizador
         }
         
         Motorista m = (Motorista) o;
-        return this.idTaxi == m.getIdTaxi()
-            && this.x == m.getX()
-            && this.y == m.getY()
+        return this.taxi.equals(m.getTaxi())
             && this.grauDeCumprimentoDoHorario == m.getGrauDeCumprimentoDoHorario()
             && this.classificacaoDoMotorista == m.getClassificacaoDoMotorista()
             && this.historicoDeViagens.equals(m.getHistoricoDeViagens())
@@ -99,15 +100,14 @@ public class Motorista extends Utilizador
     
     public String toString()
     {
-        StringBuilder string = new StringBuilder(); 
-        string.append("TaxiID: "); string.append(this.idTaxi);
-        string.append("x: "); string.append(this.x);
-        string.append("y: "); string.append(this.y); 
-        string.append("GrauDeCumprimentoDoHorario: "); string.append(this.grauDeCumprimentoDoHorario);
-        string.append("ClassificacaoDoMotorista: "); string.append(this.classificacaoDoMotorista);
-        string.append("HistoricoDeViagens: "); string.append(this.historicoDeViagens.toString());
-        string.append("TotalKms: "); string.append(this.totalKms);
-        string.append("EstaDisponivel: "); string.append(this.estaDisponivel);
+        StringBuilder string = new StringBuilder(super.toString()); 
+  
+        string.append("GrauDeCumprimentoDoHorario: "); string.append(this.grauDeCumprimentoDoHorario); string.append("\n");
+        string.append("ClassificacaoDoMotorista: "); string.append(this.classificacaoDoMotorista); string.append("\n");
+        string.append("HistoricoDeViagens: "); string.append(this.historicoDeViagens.toString()); string.append("\n");
+        string.append("TotalKms: "); string.append(this.totalKms); string.append("\n");
+        string.append("EstaDisponivel: "); string.append(this.estaDisponivel); string.append("\n");
+        string.append("Taxi: "); string.append(this.taxi.toString()); string.append("\n");
         
        return string.toString();
     }
@@ -116,5 +116,91 @@ public class Motorista extends Utilizador
     public Motorista clone ()
     {
         return new Motorista(this);
+    }
+    
+    public void ficarDisponivel()
+    {
+        setEstaDisponivel(true);
+    }
+    
+    public void ficarIndisponivel()
+    {
+        setEstaDisponivel(false);
+    }
+    
+    public double calculaDistancia(double x,double y)
+    {
+        double distancia = Math.sqrt(Math.pow((this.getX() -x), (double) 2) + Math.pow((this.getY() - y), 2));
+        
+        return distancia;
+    }
+    
+    public double calculaTempoViagem(double dis)
+    {
+        return dis/this.taxi.getVelocidadeMedia();
+    }
+    
+    public double calculaPrecoViagem(double dis)
+    {
+        return dis*this.taxi.getPrecoBase();
+    }
+    
+    public void registarViagem(Cliente c)
+    {
+       double dV = calculaDistancia(c.getX(),c.getY()); // ta mal tem ta a distancia ao cliente e nao o da viagem
+       double dc = calculaDistancia(c.getX(),c.getY());
+       double te = calculaTempoViagem(dV);
+       double tr = 0;
+       double pv = calculaPrecoViagem(dV);
+       int cv = 10;
+       
+       Viagem v = new Viagem(dV,dc,te,tr,pv,cv);
+       this.historicoDeViagens.add(v);
+       this.totalKms+=dV+dc;
+       this.taxi.getHistoricoDeViagens().add(v);
+       c.getHistoricoDeViagens().add(v);
+    }
+    
+    public void associaVeiculo(int id,HashMap<Integer,Veiculo> hm)
+    {
+        setTaxi(hm.get(id));
+    }
+    
+    public void inserirVeiculo(HashMap<Integer,Veiculo> hm)
+    {
+     int id;
+     String marca,modelo;
+     double vm,pb;
+     int c;
+     String tipo;
+     Scanner sc = new Scanner(System.in);
+     
+     System.out.println("Qual o tipo de veiculo a inserir (9Lugares/Ligeiro/Moto)");
+     tipo=sc.next();
+     System.out.println("Marca do Veiculo");
+     marca = sc.next();
+     System.out.println("Modelo do Veiculo");
+     modelo=sc.next();
+     System.out.println("Velocidade Media");
+     vm= sc.nextDouble();
+     System.out.println("Preço Base por Km");
+     pb=sc.nextDouble();
+     System.out.println("Capacidade do Veiculo");
+     c=sc.nextInt();
+     
+     Veiculo v=null;
+     if(tipo.equals("9Lugares")) v = new CarroDe9Lugares(-1,marca,modelo,vm,pb,10,c,new ArrayList<Viagem>(),new ArrayList<Viagem>());
+     else if(tipo.equals("Ligeiro")) v = new CarroLigeiro(-1,marca,modelo,vm,pb,10,c,new ArrayList<Viagem>(),new ArrayList<Viagem>());
+     else if (tipo.equals("Moto"))v = new Moto(-1,marca,modelo,vm,pb,10,c,new ArrayList<Viagem>(),new ArrayList<Viagem>());
+     else {System.out.println("Tipo do Veiculo desconhecido insira de novo"); return;}
+     
+     hm.put(v.getId(),v);
+    }
+    
+    public void moveTaxi(double x,double y)
+    {
+        double d = calculaDistancia(x,y);
+        this.setX(x); this.setY(y);
+        this.totalKms+=d;
     }
 }
