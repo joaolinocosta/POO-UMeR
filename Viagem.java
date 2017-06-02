@@ -1,6 +1,6 @@
 import java.util.*;
 import java.time.LocalDateTime;
-
+import java.lang.Math;
 
 
 public class Viagem
@@ -32,7 +32,7 @@ public class Viagem
         this.distanciaTaxiCliente = pDistanciaTaxiCliente;
         this.tempoEstimado = pTempoEstimado;
         this.tempoReal = pTempoReal;
-        this.precoDaViagem = pPrecoDaViagem;
+        this.precoDaViagem = pPrecoDaViagem;    
         this.classificacaoDaViagem = pClassificacaoDaViagem;
         this.data = LocalDateTime.now();
     }
@@ -58,7 +58,12 @@ public class Viagem
     public int getClassificacaoDaViagem()   { return this.classificacaoDaViagem;    }
     public LocalDateTime getData()          { return this.data;                     }
     
+    public void setDistanciaDaViagem(double pD) {this.distanciaDaViagem = pD; }
     public void setDistanciaTaxiCliente(double pDistanciaTaxiCliente) { this.distanciaTaxiCliente = pDistanciaTaxiCliente; }
+    public void setTempoEstimado(double time) {this.tempoEstimado = time; }
+    public void setTempoReal(double tr) {this.tempoReal = tr; }
+    public void setPrecoDaViagem(double pv) {this.precoDaViagem = pv; }
+    public void setClassificacaoDaViagem(int c) {this.classificacaoDaViagem = c; }
     
     
     public boolean equals(Object o)
@@ -87,13 +92,13 @@ public class Viagem
     public String toString()
     {
         StringBuilder string = new StringBuilder();     
-        string.append("DistanciaDaViagem: "); string.append(this.distanciaDaViagem);
-        string.append("DistanciaTaxiCliente: "); string.append(this.distanciaTaxiCliente);
-        string.append("TempoEstimado: "); string.append(this.tempoEstimado);
-        string.append("TempoReal: "); string.append(this.tempoReal);
-        string.append("PrecoDaViagem: "); string.append(this.precoDaViagem);
-        string.append("ClassificacaoDaViagem: "); string.append(this.classificacaoDaViagem);
-        string.append("Data:"); string.append(this.data.toString());
+        string.append("Distância da viagem                  |   "); string.append(this.distanciaDaViagem); string.append("\n");
+        string.append("Distância entre o taxi e o cliente   |   "); string.append(this.distanciaTaxiCliente); string.append("\n");
+        string.append("Tempo estimado                       |   "); string.append(this.tempoEstimado); string.append("\n");
+        string.append("Tempo real                           |   "); string.append(this.tempoReal); string.append("\n");
+        string.append("Preço da viagem                      |   "); string.append(this.precoDaViagem); string.append("\n");
+        string.append("Classificação da viagem              |   "); string.append(this.classificacaoDaViagem); string.append("\n");
+        string.append("Data                                 |   "); string.append(this.data.toString()); string.append("\n");
         
         return string.toString();
     }
@@ -104,10 +109,10 @@ public class Viagem
     }
     
     
-    public double calcularUmaDistancia(double pXInicial, double pYInicial, double pXFinal, double pYFinal)
+    public double calcularDistancia(double xInicial, double yInicial, double xFinal, double yFinal)
     {
-        double distancia = Math.sqrt(Math.pow((pXInicial - pXFinal), (double) 2) + Math.pow((pYInicial - pYFinal), 2));
-        
+        double distancia = Math.sqrt(Math.pow((xInicial-xFinal), 2) + Math.pow((yInicial-yFinal),2));
         return distancia;
+        
     }
 }
